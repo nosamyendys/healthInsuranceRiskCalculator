@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8">
+    <title>Health Insurance Calculator</title>
+
+</head>
+
+
+<body>
+
+<!-- 
+        Sydney Mason
+        sydneyjmason@lewisu.edu
+        Health Insurance Webssite
+    -->
+
+    <style>
+
+        body{
+            background-color: lightblue;
+        }
+
+    </style>
+
+    <h1>Health Insurance Calculator</h1>
+    <h2>Notice!</h2>
+    <p>This is not any sort of offical Health Insurance Calculator. Therefore for more
+        accurate answers, see your own healthcare provider to see if you are eligible
+        for their own programs. Although by taking this test you will get an approximate 
+        answer for if you are insurable. In order to see if you are elible we need to know
+        your Age, BMI, Blood Pressure, and Family Disease History.
+    </p>
+
+    <label style = "color:darkblue" >Age.</label><br />
+    <select id="q1">
+        <option value="0">Under 30</option>
+        <option value="10">30-44</option>
+        <option value="20">45-59</option>
+        <option value="30"> 60+</option>
+    </select>
+
+    <br /><br />
+
+    <label style = "color:darkblue" >BMI.</label><br />
+    <select id="q2">
+        <option value="0">Normal</option>
+        <option value="30">Overweight</option>
+        <option value="75">Anything Else.</option>
+    </select>
+
+    <br /><br />
+
+    <label style = "color:darkblue" >Blood Pressure.</label><br />
+    <select id="q3">
+        <option value="0">Normal</option>
+        <option value="15">Elevated</option>
+        <option value="30">Stage 1</option>
+        <option value="75">Stage 2</option>
+        <option value="100">Crisis</option>
+    </select>
+
+    <br /><br />
+
+    <label style = "color:darkblue" >Family Disease.</label><br />
+    <select id="q4">
+        <option value="0">None</option>
+        <option value="10">Diabetes</option>
+        <option value="10">Cancer</option>
+        <option value="10">Alzheimer's</option>
+    </select>
+
+    <br /><br />
+    <br /><br />
+    <br /><br />
+
+    <button onclick="healthInsuranceCalculate()">Calculate If Insurable</button>
+    <p id="calculation"></p>
+    
+    <script>
+        console.log("Calculator On!")
+
+        function healthInsuranceCalculate() {
+            console.log("Begining Calculations")
+
+            let response1 = document.getElementById("q1").selectedOptions[0].value;
+            let response2 = document.getElementById("q2").selectedOptions[0].value;
+            let response3 = document.getElementById("q3").selectedOptions[0].value;
+            let response4 = document.getElementById("q4").selectedOptions[0].value;
+
+            console.log("Question 1 Answers: ");
+            console.log(document.getElementById("q1").selectedOptions[0].text);
+            console.log(document.getElementById("q1").selectedOptions[0].value);
+            console.log(response1);
+
+            console.log("Question 2 Answers: ");
+            console.log(document.getElementById("q2").selectedOptions[0].text);
+            console.log(document.getElementById("q2").selectedOptions[0].value);
+            console.log(response2);
+
+            console.log("Question 3 Answers: ");
+            console.log(document.getElementById("q3").selectedOptions[0].text);
+            console.log(document.getElementById("q3").selectedOptions[0].value);
+            console.log(response3);
+
+            console.log("Question 4 Answers: ");
+            console.log(document.getElementById("q4").selectedOptions[0].text);
+            console.log(document.getElementById("q4").selectedOptions[0].value);
+            console.log(response4);
+
+            //I understand that Math.abs is used to find the absolute but I needed the numbers to 
+            //be stored as numbers not text, and i tried other things but none of them worked but
+            //what is below.
+
+            numResponse1 = Math.abs(response1);
+            numResponse2 = Math.abs(response2);
+            numResponse3 = Math.abs(response3);
+            numResponse4 = Math.abs(response4);
+
+            let totalCalculation = numResponse1 + numResponse2 + numResponse3 + numResponse4;
+
+            console.log("Total Calculation: " + totalCalculation);
+
+            if (totalCalculation <=20) {
+                document.getElementById("calculation").innerHTML = "Your score is at most 20, and your are low risk";
+
+            }else if (totalCalculation <= 50) {
+                document.getElementById("calculation").innerHTML = "Your score is at most 50, and your are moderate risk";
+
+            }else if (totalCalculation <= 75) {
+                document.getElementById("calculation").innerHTML = "Your score is at most 75, and your are high risk";
+            } else {
+                document.getElementById("calculation").innerHTML = "Your score is over 75, and your are uninsurable";
+            }
+
+        }
+            
+
+    </script>
+
+</body>
+
+
+
+</html>
